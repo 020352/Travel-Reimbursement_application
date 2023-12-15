@@ -16,9 +16,9 @@ namespace Apiapp.Migrations
                 {
                     sno = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeID = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ratings = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    feedback = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    EmployeeId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Rating = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Feedback = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

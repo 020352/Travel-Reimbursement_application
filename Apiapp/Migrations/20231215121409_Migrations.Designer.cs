@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Apiapp.Migrations
 {
     [DbContext(typeof(TodoContext))]
-    [Migration("20230321164309_Migrations")]
+    [Migration("20231215121409_Migrations")]
     partial class Migrations
     {
         /// <inheritdoc />
@@ -19,7 +19,7 @@ namespace Apiapp.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.4")
+                .HasAnnotation("ProductVersion", "7.0.14")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -32,13 +32,16 @@ namespace Apiapp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("sno"));
 
-                    b.Property<string>("EmployeeID")
+                    b.Property<string>("EmployeeId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("feedback")
+                    b.Property<string>("Feedback")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ratings")
+                    b.Property<string>("Rating")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("sno");

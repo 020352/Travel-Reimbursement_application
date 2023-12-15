@@ -260,6 +260,8 @@ public class EmployeeController:Controller
             ratings.EmployeeId = Request.Form["id"];
             ratings.Feedback = Request.Form["fe"];
             ratings.Rating = Request.Form["ra"];
+            Console.WriteLine(ratings.Rating);
+            Console.WriteLine(ratings.Feedback);
             HttpClient httpClient=new HttpClient();
 
 

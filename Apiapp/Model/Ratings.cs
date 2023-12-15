@@ -7,8 +7,11 @@ namespace Apiapp.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int sno{get; set;}
-        public string EmployeeID{get; set;}
-        public string ratings{get; set;}
-        public string feedback{get; set;}z
+        [Required]
+        public string EmployeeId{get; set;}
+        [Required]
+        public string Rating{get; set;}
+        [Required]
+        public string Feedback{get; set;}
     }
 }

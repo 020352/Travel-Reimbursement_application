@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dhivy\\Documents\\Application files\\Travel_reimburseent\\Apiapp\\Apiapp.csproj": {}
+    "C:\\Users\\dhivy\\Documents\\App\\Apiapp\\Apiapp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dhivy\\Documents\\Application files\\Travel_reimburseent\\Apiapp\\Apiapp.csproj": {
+    "C:\\Users\\dhivy\\Documents\\App\\Apiapp\\Apiapp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dhivy\\Documents\\Application files\\Travel_reimburseent\\Apiapp\\Apiapp.csproj",
+        "projectUniqueName": "C:\\Users\\dhivy\\Documents\\App\\Apiapp\\Apiapp.csproj",
         "projectName": "Apiapp",
-        "projectPath": "C:\\Users\\dhivy\\Documents\\Application files\\Travel_reimburseent\\Apiapp\\Apiapp.csproj",
+        "projectPath": "C:\\Users\\dhivy\\Documents\\App\\Apiapp\\Apiapp.csproj",
         "packagesPath": "C:\\Users\\dhivy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dhivy\\Documents\\Application files\\Travel_reimburseent\\Apiapp\\obj\\",
+        "outputPath": "C:\\Users\\dhivy\\Documents\\App\\Apiapp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dhivy\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -48,7 +48,7 @@
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "target": "Package",
-              "version": "[7.0.4, )"
+              "version": "[7.0.14, )"
             },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
@@ -56,11 +56,11 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[7.0.4, )"
+              "version": "[7.0.14, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
-              "version": "[7.0.4, )"
+              "version": "[7.0.14, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration": {
               "target": "Package",

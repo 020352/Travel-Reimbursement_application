@@ -31,7 +31,9 @@ namespace Apiapp.Controllers
       [HttpPost]
       public async Task<bool> PutTodoItems(Ratings ratings)
       {
-        Console.WriteLine(ratings.feedback);
+        // Console.WriteLine(ratings.feedback);
+        // Console.WriteLine(ratings.scores);
+        // Console.WriteLine(ratings.EmployeeID);
         _context.TodoItems.Add(ratings);
         _context.SaveChanges();
         return true;
