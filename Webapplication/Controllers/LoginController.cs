@@ -2,11 +2,21 @@ using Microsoft.AspNetCore.Mvc;
 using Webapplication.Models;
 using Microsoft.AspNetCore.Http;
 using System.Diagnostics;
+using Serilog;
 
 namespace Webapplication.Controllers
 {[Log]
     public class LoginController : Controller
     {
+        private readonly ILogger<LoginController> _logger;
+        private readonly IValidation _validation;
+
+        public LoginController(ILogger<LoginController> logger, IValidation validation)
+    {
+        _logger = logger;
+        _validation=validation;
+    }
+
         [HttpGet]
         public IActionResult SignUp()
         {
@@ -15,29 +25,29 @@ namespace Webapplication.Controllers
         [HttpPost]
         public IActionResult SignUp(SignUpAccount signupaccount)
         {
-            if(Validation.validateDetails(signupaccount)==1)
+            if(_validation.validateDetails(signupaccount)==1)
             {
                 if(ModelState.IsValid)
                  return RedirectToAction("Index","Home");
                 return View();
             }
-            else if(Validation.validateDetails(signupaccount)==2)
+            else if(_validation.validateDetails(signupaccount)==2)
             {
                 ViewBag.Message="Password doesnot match";
                 return View("Signup");
             }
-            else if(Validation.validateDetails(signupaccount)==3)
+            else if(_validation.validateDetails(signupaccount)==3)
             {
                 ViewBag.Message="Invalid Username or Password";
                 return View("Signup");
             }
 
-            else if(Validation.validateDetails(signupaccount)==4)
+            else if(_validation.validateDetails(signupaccount)==4)
             {
                 ViewBag.Message="Invalid ID";
                 return View("Signup");
             }
-            else if(Validation.validateDetails(signupaccount)==5)
+            else if(_validation.validateDetails(signupaccount)==5)
             {
                 ViewBag.Message="User already exists";
                 return View("Signup");
@@ -62,7 +72,7 @@ namespace Webapplication.Controllers
             {
                 ModelState.AddModelError("id","The id and password should not be same");
             }
-            if(Validation.validateLogin(account)==1)
+            if(_validation.validateLogin(account)==1)
             {
                 if(ModelState.IsValid)
                 {
@@ -79,17 +89,17 @@ namespace Webapplication.Controllers
                 }
                 return View();
             }
-            else if(Validation.validateLogin(account)==2)
+            else if(_validation.validateLogin(account)==2)
             {
                 ViewBag.Message="Invalid Password";
                 return View("LoginPage");
             }
-            else if(Validation.validateLogin(account)==3)
+            else if(_validation.validateLogin(account)==3)
             {
                 ViewBag.Message="User doesnot exists";
                 return View("LoginPage");
             }
-            else if(Validation.validateLogin(account)==4)
+            else if(_validation.validateLogin(account)==4)
             {
                 HttpContext.Session.SetString("Session",account.EmployeeId);
                 return RedirectToAction("Home","Admin");
@@ -109,9 +119,9 @@ namespace Webapplication.Controllers
         {
             if(ModelState.IsValid)
             {
-                if(Validation.changePassword(forgotPassword)==1)
+                if(_validation.changePassword(forgotPassword)==1)
                  return View("Thanks");
-                else if(Validation.changePassword(forgotPassword)==2)
+                else if(_validation.changePassword(forgotPassword)==2)
                 {
                     ViewBag.Message="User doesot exists";
                     return View("Forgotpassword");

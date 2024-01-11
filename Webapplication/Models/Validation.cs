@@ -8,7 +8,7 @@ using System.Net;
 using System.Net.Mail;
 namespace Webapplication.Models
 {
-    public class Validation
+    public class Validation:IValidation
     {
         static Dictionary<string, string[]> employeedata = new Dictionary<string, string[]>();
 
@@ -32,7 +32,7 @@ namespace Webapplication.Models
                 }
             }
         }
-        public  static int validateDetails(SignUpAccount signupaccount)
+        public   int validateDetails(SignUpAccount signupaccount)
         {
             string idpattern="^[A-Z]{3}[0-9]{5}$";
             string userpattern="^[a-zA-Z]*$";
@@ -100,7 +100,7 @@ namespace Webapplication.Models
                 return 4;
             }
         }
-        public static  int validateLogin(Account account)
+        public   int validateLogin(Account account)
         {
             
                 foreach(var checkdata in employeedata)
@@ -122,7 +122,7 @@ namespace Webapplication.Models
                 }
             return 3;
         }
-        public static int changePassword(ForgotPassword forgotpassword)
+        public  int changePassword(ForgotPassword forgotpassword)
         {
             string id=forgotpassword.EmployeeID;
             string email=forgotpassword.Emailaddress;
@@ -152,7 +152,7 @@ namespace Webapplication.Models
              }
              return 2;
         }
-        public static int validateForm(Employees employee)
+        public  int validateForm(Employees employee)
         {
             
             // int fileSize= employee.Attachment.ContentLength;
@@ -165,7 +165,7 @@ namespace Webapplication.Models
             }
             return 2;
         }
-        public static SignUpAccount viewProfile(string EmployeeID)
+        public  SignUpAccount viewProfile(string EmployeeID)
         {
             SignUpAccount signupaccount= new SignUpAccount();
             try
@@ -201,39 +201,39 @@ namespace Webapplication.Models
             return ""; 
         }
 
-        public static async Task sendEmail(string receiver,string message)
-        {
-            try
-            {
-                var senderEmail= new MailAddress("dhivyankumar253@gmail.com","Dhivyan");
-                var receiverEmail= new MailAddress(receiver,"Receiver");
-                var password="Kd.com@253";
-                var subject="Reimbursement Status";
-                var body=message;
-                Console.WriteLine("Trying............!!!!!......");
-                var smtp = new SmtpClient
-                {
-                    Host="smtp.gmail.com",
-                    Port=587,
-                    EnableSsl=true,
-                    DeliveryMethod= SmtpDeliveryMethod.Network,
-                    UseDefaultCredentials=false,
-                    Credentials= new NetworkCredential(senderEmail.Address,password)
-                };  
-                using(var mess=new MailMessage(senderEmail,receiverEmail)
-                {
-                    Subject=subject,
-                    Body=body
-                })
-                {
-                    await smtp.SendMailAsync(mess);
-                    Console.WriteLine("Mail Sent");
-                }
-            }
-            catch(Exception exception)
-            {
-                Console.WriteLine("Error in sending Email");
-            }
-        }
+        // public static async Task sendEmail(string receiver,string message)
+        // {
+        //     try
+        //     {
+        //         var senderEmail= new MailAddress("dhivyankumar253@gmail.com","Dhivyan");
+        //         var receiverEmail= new MailAddress(receiver,"Receiver");
+        //         var password="Kd.com@253";
+        //         var subject="Reimbursement Status";
+        //         var body=message;
+        //         Console.WriteLine("Trying............!!!!!......");
+        //         var smtp = new SmtpClient
+        //         {
+        //             Host="smtp.gmail.com",
+        //             Port=587,
+        //             EnableSsl=true,
+        //             DeliveryMethod= SmtpDeliveryMethod.Network,
+        //             UseDefaultCredentials=false,
+        //             Credentials= new NetworkCredential(senderEmail.Address,password)
+        //         };  
+        //         using(var mess=new MailMessage(senderEmail,receiverEmail)
+        //         {
+        //             Subject=subject,
+        //             Body=body
+        //         })
+        //         {
+        //             await smtp.SendMailAsync(mess);
+        //             Console.WriteLine("Mail Sent");
+        //         }
+        //     }
+        //     catch(Exception exception)
+        //     {
+        //         Console.WriteLine("Error in sending Email");
+        //     }
+        // }
     }
 }

@@ -979,3 +979,12 @@ C:\Users\dhivy\Documents\App\Webapplication\obj\Debug\net7.0\refint\Webapplicati
 C:\Users\dhivy\Documents\App\Webapplication\obj\Debug\net7.0\Webapplication.pdb
 C:\Users\dhivy\Documents\App\Webapplication\obj\Debug\net7.0\Webapplication.genruntimeconfig.cache
 C:\Users\dhivy\Documents\App\Webapplication\obj\Debug\net7.0\ref\Webapplication.dll
+C:\Users\dhivy\Documents\App\Webapplication\bin\Debug\net7.0\Serilog.dll
+C:\Users\dhivy\Documents\App\Webapplication\bin\Debug\net7.0\Serilog.Sinks.Console.dll
+C:\Users\dhivy\Documents\App\Webapplication\bin\Debug\net7.0\Serilog.Sinks.File.dll
+C:\Users\dhivy\Documents\App\Webapplication\bin\Debug\net7.0\Serilog.Settings.Configuration.dll
+C:\Users\dhivy\Documents\App\Webapplication\bin\Debug\net7.0\Serilog.AspNetCore.dll
+C:\Users\dhivy\Documents\App\Webapplication\bin\Debug\net7.0\Serilog.Extensions.Hosting.dll
+C:\Users\dhivy\Documents\App\Webapplication\bin\Debug\net7.0\Serilog.Extensions.Logging.dll
+C:\Users\dhivy\Documents\App\Webapplication\bin\Debug\net7.0\Serilog.Formatting.Compact.dll
+C:\Users\dhivy\Documents\App\Webapplication\bin\Debug\net7.0\Serilog.Sinks.Debug.dll

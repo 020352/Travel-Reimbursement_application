@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using Webapplication.Models;
+using Serilog;
 
 namespace Webapplication.Controllers;
 [Log]
@@ -49,6 +50,7 @@ public class HomeController : Controller
         catch(LoginNotFoundException loginnotfoundexception)
         {
         TempData["Message"]= loginnotfoundexception.Message;
+        Log.Information(loginnotfoundexception.Message);
         return RedirectToAction("LoginPage","Login");
         }
     }

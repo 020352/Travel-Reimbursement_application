@@ -16,13 +16,18 @@ public class EmployeeController:Controller
     private readonly ApplicationDbContext _db;
     private readonly IWebHostEnvironment _WebHostEnivernment;
     private CookieOptions lastvisitedcookie;
+    private readonly ILogger<EmployeeController> _logger;
+    private readonly IValidation _validation;
 
-    public EmployeeController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment)
+
+    public EmployeeController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment,ILogger<EmployeeController> logger, IValidation validation)
     {
         lastvisitedcookie= new CookieOptions();
         lastvisitedcookie.Expires=DateTime.Now.AddDays(30);
         _db=db;
         _WebHostEnivernment = webHostEnvironment;
+        _logger=logger;
+        _validation=validation;
     }
     public IActionResult Start()
     {
@@ -56,7 +61,7 @@ public class EmployeeController:Controller
     public IActionResult Create()
     {
         string tempuserid=HttpContext.Session.GetString("Session");
-        SignUpAccount signupaccount =  Validation.viewProfile(HttpContext.Session.GetString("Session"));
+        SignUpAccount signupaccount =  _validation.viewProfile(HttpContext.Session.GetString("Session"));
         if(!string.IsNullOrEmpty(tempuserid))
         {
             Response.Cookies.Append(tempuserid,"Create",lastvisitedcookie);
@@ -72,7 +77,7 @@ public class EmployeeController:Controller
 
     public async Task<IActionResult> Create(Employees employee)
     {
-        SignUpAccount signupaccount =  Validation.viewProfile(HttpContext.Session.GetString("Session"));
+        SignUpAccount signupaccount =  _validation.viewProfile(HttpContext.Session.GetString("Session"));
         Console.WriteLine(Request.Form.Files.Count);
         if(!string.IsNullOrEmpty(ViewBag.Message=HttpContext.Session.GetString("Session")))
         {
@@ -128,7 +133,7 @@ public class EmployeeController:Controller
    public IActionResult Profile()
    {
     string tempuserid=HttpContext.Session.GetString("Session");
-    SignUpAccount signupaccount =  Validation.viewProfile(HttpContext.Session.GetString("Session"));
+    SignUpAccount signupaccount =  _validation.viewProfile(HttpContext.Session.GetString("Session"));
     
     if(!string.IsNullOrEmpty(tempuserid))
     {

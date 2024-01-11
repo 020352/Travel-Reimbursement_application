@@ -11,11 +11,14 @@ public class AdminController: Controller
 {
     private readonly ApplicationDbContext _db;
     private readonly ILogger<AdminController> _logger;
+    private readonly IValidation _validation;
 
-    public AdminController(ApplicationDbContext db,ILogger<AdminController> logger)
+
+    public AdminController(ApplicationDbContext db,ILogger<AdminController> logger,IValidation validation)
     {
         _logger = logger;
         _db=db;
+        _validation=validation;
     }
     [ResponseCache(Location=ResponseCacheLocation.None, NoStore =true)]
     public IActionResult Reports(Employees employees)
@@ -32,13 +35,13 @@ public class AdminController: Controller
       
     public IActionResult Approve(Employees employees)
     {
-        SignUpAccount signupaccount =  Validation.viewProfile(employees.EmployeeId);
+        SignUpAccount signupaccount =  _validation.viewProfile(employees.EmployeeId);
         Console.WriteLine(signupaccount.Emailaddress);
         var text="Your form has been approved";
         employees.Status = "Approved";
         _db.ReimbursementDetails.Update(employees);
         _db.SaveChanges();
-        Validation.sendEmail(signupaccount.Emailaddress,text);
+        // Validation.sendEmail(signupaccount.Emailaddress,text);
         //Console.WriteLine(mail);
         return RedirectToAction("Reports","Admin");
     }
@@ -61,7 +64,7 @@ public class AdminController: Controller
     [ResponseCache(Location=ResponseCacheLocation.None, NoStore =true)]
     public IActionResult AdminProfile()
    {
-    SignUpAccount signupaccount =  Validation.viewProfile(HttpContext.Session.GetString("Session"));
+    SignUpAccount signupaccount =  _validation.viewProfile(HttpContext.Session.GetString("Session"));
     
     if(!string.IsNullOrEmpty(ViewBag.Message=HttpContext.Session.GetString("Session")))
     {
